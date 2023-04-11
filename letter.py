@@ -1,0 +1,5 @@
+letter = input("Please type in your message:")
+key = input("Please enter your key:")
+encrypt=input()
+print(encrypt_letter(letter, key))
+print(decrypt_letter(letter, key))
