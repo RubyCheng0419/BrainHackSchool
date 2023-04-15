@@ -28,36 +28,40 @@ def decrypt_letter(lst, lst2):
 # def process_message
 def process_message(letter, key, encrypt):
     if encrypt == "True":
-        print(encrypt_letter(letter, key))
+        # change key length
+        key = generatekey(letter, key)
+        lst = []
+        lst2= []
+        # separate each character of the word
+        for char in letter:
+            lst.append(char)  
+        for char in key:
+            lst2.append(char)
+        ans = encrypt_letter(letter, key)
+        return ans
     else:
-        print(decrypt_letter(letter, key))
+        # change key length
+        key = generatekey(letter, key)
+        lst = []
+        lst2= []
+        # separate each character of the word
+        for char in letter:
+            lst.append(char)  
+        for char in key:
+            lst2.append(char)
+        ans = decrypt_letter(letter, key)
+        return ans
+    
 
+if __name__ == "__main__":
+    letter = input("your message: ")
+    key = input("your key: ")
+    encrypt=input()
+    ans = process_message(letter,key,encrypt)
+    print (ans)   
 
-
-letter = input("your message: ")
-key = input("your key: ")
-encrypt=input()
-
-lst = []
-lst2= []
-
-# change key length
-key = generatekey(letter, key)
-
-# separate each character of the word
-for char in letter:
-    lst.append(char)  
-
-for char in key:
-    lst2.append(char)
-
-process_message(letter,key,encrypt)
-
-
-
-
-# if __name__ == "_main_":
-#     x = input("Please type in your message:")
-#     y = input("Please enter your key:")
-#     ans=decrypt_letter(x, y)
-#     print(ans)
+    # x = input("Please enter your message: ")
+    # y = input("Please enter your key: ")
+    # Z = input("True or False: ")
+    # x= process_message(a,b,c)
+    # print(x)
