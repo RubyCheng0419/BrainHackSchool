@@ -11,24 +11,21 @@ parser.add_argument("--mode",
 
 echo: Namespace = parser.parse_args()
 
-if __name__ == "__main__":
+def main(echo):
     if echo.mode == "enc":
-        encrypt = "True"
+        encrypt = True
         summary = echo.message.replace(".txt", "_encrypted.txt")
-        # print(msg_file)
     elif echo.mode == "dec":
-        encrypt = "False"
+        encrypt = False
         summary = echo.message.replace(".txt", "_decrypted.txt")
-        # print(msg_file)
-
     with open(summary, 'w') as f:
         print(summary)
-        handle = open(echo.message)
-        # print(handle)
-        # print(echo.message)
-        for line in handle:
-            line = line.rstrip()
-            ans = UF.process_message(line, echo.key,encrypt)
-            print(ans)
-            f.write("%s\n" % ans)
-            
+        with open(echo.message) as handle:
+            for line in handle:
+                line = line.rstrip()
+                ans = UF.process_message(line, echo.key, encrypt)
+                print(ans)
+                f.write("%s\n" % ans)
+
+if __name__ == "__main__":
+    main (echo)
